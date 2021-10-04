@@ -1,6 +1,7 @@
 package luis.leyva.peliculas_00000132320
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,17 @@ class AdaptadorPeliculas: BaseAdapter {
        tv_descripcion.setText(pelicula.descripcion)
        img.setImageResource(pelicula.img)
 
+       vista.setOnClickListener{
+            val intent: Intent = (Intent(context, DetallePelicula::class.java))
+           intent.putExtra("nombre", pelicula.nombre)
+           intent.putExtra("descripcion", pelicula.descripcion)
+           intent.putExtra("imagen", pelicula.img)
+           context.startActivity(intent)
+       }
+
         return vista
     }
+
+
+
 }
